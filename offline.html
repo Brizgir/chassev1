@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hors ligne - Suivi Chasse</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .offline-container {
+            max-width: 400px;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .offline-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            margin: 0 0 1rem 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        p {
+            margin: 0 0 1.5rem 0;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+        
+        .retry-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .retry-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .status {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="offline-icon">📡</div>
+        <h1>Connexion perdue</h1>
+        <p>Vous êtes actuellement hors ligne. Vérifiez votre connexion internet et réessayez.</p>
+        <button class="retry-btn" onclick="window.location.reload()">
+            Réessayer
+        </button>
+        <div class="status" id="status">
+            Tentative de reconnexion...
+        </div>
+    </div>
+
+    <script>
+        // Vérifier la connexion
+        function checkConnection() {
+            if (navigator.onLine) {
+                document.getElementById('status').textContent = 'Connexion rétablie ! Redirection...';
+                setTimeout(() => {
+                    window.location.href = '/suivi-chasse_leaflet_fix_v2.html';
+                }, 1000);
+            } else {
+                document.getElementById('status').textContent = 'Toujours hors ligne';
+            }
+        }
+
+        // Écouter les changements de connexion
+        window.addEventListener('online', checkConnection);
+        window.addEventListener('offline', () => {
+            document.getElementById('status').textContent = 'Connexion perdue';
+        });
+
+        // Vérifier toutes les 5 secondes
+        setInterval(checkConnection, 5000);
+        
+        // Vérification initiale
+        checkConnection();
+    </script>
+</body>
+</html>
