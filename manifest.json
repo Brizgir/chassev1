@@ -2,7 +2,7 @@
   "name": "Suivi Chasse",
   "short_name": "Chasse",
   "description": "Application de suivi de chasse avec GPS, statistiques et cartographie",
-  "start_url": "./",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#2c5530",
   "theme_color": "#2c5530",
