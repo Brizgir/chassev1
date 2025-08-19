@@ -1,0 +1,49 @@
+# Fichiers système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Fichiers temporaires
+*.tmp
+*.temp
+*.log
+
+# Fichiers de sauvegarde
+*.bak
+*.backup
+*~
+
+# Fichiers de données utilisateur (optionnel)
+# Décommentez si vous voulez exclure les exports de données
+# *.json
+
+# Dossiers de développement
+node_modules/
+.vscode/
+.idea/
+
+# Fichiers de cache
+.cache/
+*.cache
+
+# Fichiers de build
+dist/
+build/
+
+# Fichiers d'environnement
+.env
+.env.local
+.env.production
+
+# Fichiers de logs
+logs/
+*.log
+
+# Fichiers de test
+test/
+tests/
+__tests__/
+
+# Fichiers de documentation temporaires
+docs/temp/
+*.md~

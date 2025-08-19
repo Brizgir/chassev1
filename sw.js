@@ -1,8 +1,9 @@
 const CACHE_NAME = 'suivi-chasse-v1.0.0';
 const urlsToCache = [
-  '/',
-  '/suivi-chasse_leaflet_fix_v2.html',
-  '/manifest.json',
+  './',
+  './suivi-chasse_leaflet_fix_v2.html',
+  './manifest.json',
+  './offline.html',
   'https://cdn.jsdelivr.net/npm/chart.js',
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css',
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'
@@ -67,12 +68,12 @@ self.addEventListener('fetch', (event) => {
             
             return response;
           })
-          .catch(() => {
-            // En cas d'erreur réseau, retourner une page d'erreur hors ligne
-            if (event.request.destination === 'document') {
-              return caches.match('/offline.html');
-            }
-          });
+                     .catch(() => {
+             // En cas d'erreur réseau, retourner une page d'erreur hors ligne
+             if (event.request.destination === 'document') {
+               return caches.match('./offline.html');
+             }
+           });
       })
   );
 });

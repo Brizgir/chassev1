@@ -85,9 +85,9 @@
         function checkConnection() {
             if (navigator.onLine) {
                 document.getElementById('status').textContent = 'Connexion rétablie ! Redirection...';
-                setTimeout(() => {
-                    window.location.href = '/suivi-chasse_leaflet_fix_v2.html';
-                }, 1000);
+                                 setTimeout(() => {
+                     window.location.href = './suivi-chasse_leaflet_fix_v2.html';
+                 }, 1000);
             } else {
                 document.getElementById('status').textContent = 'Toujours hors ligne';
             }
